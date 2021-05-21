@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,8 @@ import javax.persistence.*;
 
 @Setter
 @Getter
-@Entity
+@Builder
+@Entity(name = "address")
 @Table(name = "address")
 public class AddressEntity {
     @Id
