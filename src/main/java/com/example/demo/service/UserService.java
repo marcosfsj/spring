@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.service.mapping.UserConverter;
 import com.example.demo.dto.UserDto;
 import com.example.demo.entity.UserEntity;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.mapping.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,26 +13,30 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class UserService implements IUserService {
+public class UserService {
+
+    UserRepository userRepository;
+    UserMapper userMapper;
 
     @Autowired
-    UserRepository userRepository;
-    @Autowired
-    UserConverter userConverter;
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+    }
 
     public List<UserDto> getUsers() {
-        return userConverter.entityToDto(userRepository.findAll());
+        return userMapper.entityToDto(userRepository.findAll());
     }
 
     public UserDto createNewUser(UserDto userDto) {
-        UserEntity userEntity = userRepository.save(userConverter.dtoToEntity(userDto));
-        return userConverter.entityToDto(userEntity);
+        UserEntity userEntity = userRepository.save(userMapper.dtoToEntity(userDto));
+        return userMapper.entityToDto(userEntity);
     }
 
     public Optional<UserDto> getUser(Long id) {
         Optional<UserEntity> userEntityOptional = userRepository.findById(id);
         if(userEntityOptional.isPresent()) {
-            return Optional.of(userConverter.entityToDto(userEntityOptional.get()));
+            return Optional.of(userMapper.entityToDto(userEntityOptional.get()));
         }
         return Optional.of(null);
     }

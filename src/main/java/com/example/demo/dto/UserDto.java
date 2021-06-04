@@ -1,13 +1,18 @@
 package com.example.demo.dto;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.beans.factory.annotation.Required;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-@Data
+@Setter
+@Getter
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto {
     private Long id;
     @Size(min=2, message = "First Name has to be at least 2 char long")

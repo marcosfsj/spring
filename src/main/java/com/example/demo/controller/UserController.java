@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.exception.NotFoundException;
-import com.example.demo.service.IUserService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -11,7 +11,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 import com.example.demo.dto.UserDto;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,8 +20,12 @@ import javax.validation.Valid;
 @RestController
 public class UserController {
 
+    UserService userService;
+
     @Autowired
-    IUserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/users")
     public List<UserDto> getUsers() {

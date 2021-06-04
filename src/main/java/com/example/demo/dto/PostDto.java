@@ -1,9 +1,14 @@
 package com.example.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Setter
+@Getter
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostDto {
     private Long id;
     private String description;
