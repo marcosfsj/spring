@@ -1,11 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.PostDto;
+import com.example.demo.dto.UserDto;
 import com.example.demo.entity.PostEntity;
+import com.example.demo.exception.NotFoundException;
 import com.example.demo.repository.PostRepository;
 import com.example.demo.service.mapping.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -20,6 +24,10 @@ public class PostService {
     }
 
     public PostDto save(PostDto postDto) {
+//        Optional<UserDto> userDtoOptional = userService.getUser(postDto);
+//        if(!userDtoOptional.isPresent()) {
+//            throw new NotFoundException("id: " + userId);
+//        }
         PostEntity postEntity = postRepository.save(postMapper.dtoToEntity(postDto));
         return postMapper.entityToDto(postEntity);
     }

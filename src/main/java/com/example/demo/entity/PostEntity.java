@@ -1,17 +1,16 @@
 package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Setter
+@Getter
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Entity
 public class PostEntity {
     @Id
@@ -19,6 +18,5 @@ public class PostEntity {
     private Long id;
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     private UserEntity user;
 }

@@ -38,12 +38,6 @@ public class PostController {
 
     @PostMapping("/users/{userId}/posts")
     public ResponseEntity<Object> createNewPost(@PathVariable Long userId, @Valid @RequestBody PostDto postDto) {
-        Optional<UserDto> userDtoOptional = userService.getUser(userId);
-        if(!userDtoOptional.isPresent()) {
-            throw new NotFoundException("id: " + userId);
-        }
-        UserDto userDto = userDtoOptional.get();
-        postDto.setUserDto(userDto);
         postService.save(postDto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{Id}").buildAndExpand(postDto.getId()).toUri();
         return ResponseEntity.created(location).build();

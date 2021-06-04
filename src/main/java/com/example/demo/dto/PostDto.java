@@ -12,6 +12,4 @@ import lombok.*;
 public class PostDto {
     private Long id;
     private String description;
-    @JsonIgnore
-    private UserDto userDto;
 }
