@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -33,12 +32,9 @@ public class UserService {
         return userMapper.entityToDto(userEntity);
     }
 
-    public Optional<UserDto> getUser(Long id) {
-        Optional<UserEntity> userEntityOptional = userRepository.findById(id);
-        if(userEntityOptional.isPresent()) {
-            return Optional.of(userMapper.entityToDto(userEntityOptional.get()));
-        }
-        return Optional.of(null);
+    public UserDto getUser(Long id) {
+        return userRepository.findById(id).map(userEntity -> userMapper.entityToDto(userEntity)).orElse(null);
+
     }
 
     public void deleteUser(Long id) {

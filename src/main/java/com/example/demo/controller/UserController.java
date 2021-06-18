@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.exception.NotFoundException;
-import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -34,7 +33,7 @@ public class UserController {
 
     @GetMapping("/users/{id}")
     public EntityModel<UserDto> getUser(@PathVariable Long id) {
-        UserDto userDto = userService.getUser(id).orElse(null);
+        UserDto userDto = userService.getUser(id);
         if(userDto == null) {
             throw new NotFoundException("id: " + id);
         }
