@@ -1,9 +1,6 @@
 package com.example.demo.dto;
 
 import lombok.*;
-import org.springframework.beans.factory.annotation.Required;
-
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 

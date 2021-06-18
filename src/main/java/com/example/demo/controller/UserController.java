@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.exception.NotFoundException;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;

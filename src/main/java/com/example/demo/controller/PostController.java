@@ -29,11 +29,11 @@ public class PostController {
 
     @GetMapping("/users/{userId}/posts")
     public List<PostDto> getPosts(@PathVariable Long userId) {
-        Optional<UserDto> userDtoOptional = userService.getUser(userId);
-        if(!userDtoOptional.isPresent()) {
+        UserDto userDto = userService.getUser(userId);
+        if(userDto == null) {
             throw new NotFoundException("id: " + userId);
         }
-        return userDtoOptional.get().getPosts();
+        return userDto.getPosts();
     }
 
     @PostMapping("/users/{userId}/posts")
