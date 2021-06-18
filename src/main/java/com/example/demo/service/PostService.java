@@ -3,8 +3,10 @@ package com.example.demo.service;
 import com.example.demo.dto.PostDto;
 import com.example.demo.dto.UserDto;
 import com.example.demo.entity.PostEntity;
+import com.example.demo.entity.UserEntity;
 import com.example.demo.exception.NotFoundException;
 import com.example.demo.repository.PostRepository;
+import com.example.demo.service.mapping.DtoToEntityMapper;
 import com.example.demo.service.mapping.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,10 @@ import java.util.Optional;
 public class PostService {
 
     PostRepository postRepository;
-    PostMapper postMapper;
+    DtoToEntityMapper<PostDto, PostEntity> postMapper;
 
     @Autowired
-    public PostService(PostRepository postRepository, PostMapper postMapper) {
+    public PostService(PostRepository postRepository, DtoToEntityMapper<PostDto, PostEntity> postMapper) {
         this.postRepository = postRepository;
         this.postMapper = postMapper;
     }

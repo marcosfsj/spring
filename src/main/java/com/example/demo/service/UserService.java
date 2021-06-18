@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.UserDto;
 import com.example.demo.entity.UserEntity;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.mapping.DtoToEntityMapper;
 import com.example.demo.service.mapping.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,10 @@ import java.util.List;
 public class UserService {
 
     UserRepository userRepository;
-    UserMapper userMapper;
+    DtoToEntityMapper<UserDto, UserEntity> userMapper;
 
     @Autowired
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, DtoToEntityMapper<UserDto, UserEntity> userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
     }
