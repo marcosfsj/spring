@@ -13,7 +13,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class PostController {
@@ -28,7 +27,7 @@ public class PostController {
     }
 
     @GetMapping("/users/{userId}/posts")
-    public List<PostDto> getPosts(@PathVariable Long userId) {
+    public List<PostDto> list(@PathVariable Long userId) {
         UserDto userDto = userService.getUser(userId);
         if(userDto == null) {
             throw new NotFoundException("id: " + userId);
@@ -37,7 +36,7 @@ public class PostController {
     }
 
     @PostMapping("/users/{userId}/posts")
-    public ResponseEntity<Object> createNewPost(@PathVariable Long userId, @Valid @RequestBody PostDto postDto) {
+    public ResponseEntity<Object> create(@PathVariable Long userId, @Valid @RequestBody PostDto postDto) {
         postService.save(postDto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{Id}").buildAndExpand(postDto.getId()).toUri();
         return ResponseEntity.created(location).build();

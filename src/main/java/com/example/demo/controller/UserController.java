@@ -28,32 +28,32 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public List<UserDto> getUsers() {
+    public List<UserDto> list() {
         return userService.getUsers();
     }
 
     @GetMapping("/users/{id}")
-    public EntityModel<UserDto> getUser(@PathVariable Long id) {
+    public EntityModel<UserDto> search(@PathVariable Long id) {
         UserDto userDto = userService.getUser(id);
         if(userDto == null) {
             throw new NotFoundException("id: " + id);
         }
         EntityModel<UserDto> resource = EntityModel.of(userDto);
         WebMvcLinkBuilder linkTo =
-                linkTo(methodOn(this.getClass()).getUsers());
+                linkTo(methodOn(this.getClass()).list());
         resource.add(linkTo.withRel("get-users"));
         return resource;
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Object> createNewUser(@Valid @RequestBody UserDto userDto) {
+    public ResponseEntity<Object> create(@Valid @RequestBody UserDto userDto) {
         userDto = userService.createNewUser(userDto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userDto.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
 
     @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 
