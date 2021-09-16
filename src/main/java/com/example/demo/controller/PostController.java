@@ -28,7 +28,7 @@ public class PostController {
 
     @GetMapping("/users/{userId}/posts")
     public List<PostDto> list(@PathVariable Long userId) {
-        UserDto userDto = userService.getUser(userId);
+        UserDto userDto = userService.search(userId);
         if(userDto == null) {
             throw new NotFoundException("id: " + userId);
         }

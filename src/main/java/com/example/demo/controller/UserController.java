@@ -34,7 +34,7 @@ public class UserController {
 
     @GetMapping("/users/{id}")
     public EntityModel<UserDto> search(@PathVariable Long id) {
-        UserDto userDto = userService.getUser(id);
+        UserDto userDto = userService.search(id);
         if(userDto == null) {
             throw new NotFoundException("id: " + id);
         }
@@ -54,7 +54,7 @@ public class UserController {
 
     @DeleteMapping("/users/{id}")
     public void delete(@PathVariable Long id) {
-        userService.deleteUser(id);
+        userService.delete(id);
     }
 
 }

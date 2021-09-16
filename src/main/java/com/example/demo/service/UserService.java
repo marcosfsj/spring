@@ -33,12 +33,11 @@ public class UserService {
         return userMapper.entityToDto(userEntity);
     }
 
-    public UserDto getUser(Long id) {
+    public UserDto search(Long id) {
         return userRepository.findById(id).map(userEntity -> userMapper.entityToDto(userEntity)).orElse(null);
-
     }
 
-    public void deleteUser(Long id) {
+    public void delete(Long id) {
         userRepository.deleteById(id);
     }
 
