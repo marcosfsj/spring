@@ -8,18 +8,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@WireMockTest
+//@WireMockTest
 class UserControllerTest {
 
-    @Test
-    @DisplayName("test something with wiremock")
-    void test_something_with_wiremock(WireMockRuntimeInfo wireMockRuntimeInfo) {
-        // given: bla bla
-        stubFor(get("/users").willReturn(ok()));
-        // when: bla bla
-        // and: bla bla
-        // then: bla bla
-    }
+//    @Test
+//    @DisplayName("test something with wiremock")
+//    void test_something_with_wiremock(WireMockRuntimeInfo wireMockRuntimeInfo) {
+//        // given: bla bla
+//        stubFor(get("/users").willReturn(ok()));
+//        // when: bla bla
+//        // and: bla bla
+//        // then: bla bla
+//    }
 
 
 }
