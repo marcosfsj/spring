@@ -16,4 +16,4 @@ h2:
   console:
     enabled: true
 rest-operations:
-  quoteUri: "https://quoters.apps.pcfone.io/api/random"
+  quote-uri: "https://quoters.apps.pcfone.io/api/random"
