@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 
-public class JacksonConfiguration {
+public class JacksonConfig {
 
     private final ObjectMapper objectMapper;
 
     @Autowired
-    public JacksonConfiguration(ObjectMapper objectMapper) {
+    public JacksonConfig(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 

@@ -8,10 +8,10 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestOperations;
 
 @Configuration
-public class RestConfiguration {
+public class RestConfig {
 
     @Bean
-    public RestOperations xThirdPartyRestOperations(ObjectMapper objectMapper) {
+    public RestOperations restOperations(ObjectMapper objectMapper) {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         converter.setObjectMapper(objectMapper);
 
