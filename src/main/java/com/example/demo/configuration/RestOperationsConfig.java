@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "restOperations")
+@ConfigurationProperties(prefix = "rest-operations")
 public class RestOperationsConfig {
     private String quoteUri;
 }

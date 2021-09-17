@@ -15,5 +15,5 @@ spring:
 h2:
   console:
     enabled: true
-restOperations:
+rest-operations:
   quoteUri: "https://quoters.apps.pcfone.io/api/random"
